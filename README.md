@@ -73,4 +73,3 @@ python spektra_grain_light.py input.png output_fine.png 0.008 0.5 0.0
 ## License
 
 This project is licensed under the MIT License.
-```
