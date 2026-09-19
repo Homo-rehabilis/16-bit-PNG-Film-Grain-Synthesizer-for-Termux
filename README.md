@@ -64,7 +64,7 @@ python spektra_grain_light.py input.png output_fine.png 0.008 0.5 0.0
 ## Technical Details
 
 - **Chunk Processing with Border Padding**:
-  Images are sliced into horizontal strips during processing. To avoid edge artifacts from Gaussian filtering at chunk boundaries, a dynamic overlap padding ($\text{pad} = 4 \times \text{grain\_size}$) is applied and trimmed after filtering.
+  Images are sliced into horizontal strips during processing. To avoid edge artifacts from Gaussian filtering at chunk boundaries, a dynamic overlap padding ($\text{pad} = 4 \times \text{grain size}$) is applied and trimmed after filtering.
 - **Luminance-Based Grain Masking**:
   Midtone response is calculated via a parabolic luminance curve:
   $$M = 4.0 \times L \times (1.0 - L)$$
