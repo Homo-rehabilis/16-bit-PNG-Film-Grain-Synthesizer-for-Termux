@@ -32,11 +32,17 @@ pkg install python python-numpy python-pillow
 
 # Install pure Python dependencies
 pip install scipy pypng imageio
+```
 
-Usage
+## Usage
+
+```bash
 python spektra_grain_light.py <input.png> <output.png> [amount] [size] [color_grain]
+```
 
-Command Examples
+### Command Examples
+
+```bash
 # Standard Grain
 python spektra_grain_light.py input.png output_grain.png 0.03 1.2 0.1
 
@@ -45,18 +51,26 @@ python spektra_grain_light.py input.png output_natural.png 0.015 0.6 0.1
 
 # Ultra-Fine / Subtle Grain (Fine-grain film look)
 python spektra_grain_light.py input.png output_fine.png 0.008 0.5 0.0
+```
 
-Parameters
+## Parameters
+
 | Parameter | Default | Description |
 |---|---|---|
-| amount | 0.015 | Grain Intensity. Controls noise contrast. Lower values (0.008 - 0.015) result in a subtle, natural film look. |
-| size | 0.6 | Grain Size. Gaussian blur sigma (\sigma). Controls grain cluster size (0.4 - 0.6 recommended for fine grain). |
-| color_grain | 0.1 | Color Noise Ratio. Set to 0.0 for pure monochromatic emulsion grain. |
-Technical Details
- * Chunk Processing with Border Padding:
-   Images are sliced into horizontal strips during processing. To avoid edge artifacts from Gaussian filtering at chunk boundaries, a dynamic overlap padding (\text{pad} = 4 \times \text{grain\_size}) is applied and trimmed after filtering.
- * Luminance-Based Grain Masking:
-   Midtone response is calculated via a parabolic luminance curve:
-   where L represents normalized pixel luminosity (0.0 \le L \le 1.0).
-License
+| `amount` | `0.015` | Grain Intensity. Controls noise contrast. Lower values (0.008 - 0.015) result in a subtle, natural film look. |
+| `size` | `0.6` | Grain Size. Gaussian blur sigma ($\sigma$). Controls grain cluster size (0.4 - 0.6 recommended for fine grain). |
+| `color_grain` | `0.1` | Color Noise Ratio. Set to 0.0 for pure monochromatic emulsion grain. |
+
+## Technical Details
+
+- **Chunk Processing with Border Padding**:
+  Images are sliced into horizontal strips during processing. To avoid edge artifacts from Gaussian filtering at chunk boundaries, a dynamic overlap padding ($\text{pad} = 4 \times \text{grain\_size}$) is applied and trimmed after filtering.
+- **Luminance-Based Grain Masking**:
+  Midtone response is calculated via a parabolic luminance curve:
+  $$M = 4.0 \times L \times (1.0 - L)$$
+  where $L$ represents normalized pixel luminosity ($0.0 \le L \le 1.0$).
+
+## License
+
 This project is licensed under the MIT License.
+```
